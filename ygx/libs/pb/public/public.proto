@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package public;
+
+message RPCMessage  {
+    // 消息头部
+     Head head = 1;
+    // 消息内容
+     Body body = 2;
+};
+
+message Head {
+    // 请求 uuid
+     string token = 1;
+    // 请求消息类型
+     int32 message_type = 2;
+};
+
+message Body {
+    google.protobuf.Any  body = 1 ;
+};
+
+message ResponseCode {
+     int32 retcode = 1;            // 返回码
+     string error_messgae = 2;     // 返回失败时，错误信息
+};

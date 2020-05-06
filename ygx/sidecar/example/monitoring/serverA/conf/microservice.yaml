@@ -1,0 +1,7 @@
+---
+#微服务的私有属性
+service_description:
+  name: RESTServerA
+  properties:
+    allowCrossApp: true  #可选配置。微服务是否允许其他应用的微服务发现，默认为false。在开启跨app访问时使用。
+

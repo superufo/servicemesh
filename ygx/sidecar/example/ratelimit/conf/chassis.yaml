@@ -1,0 +1,22 @@
+---
+cse:
+  service:
+    registry:
+      address: http://127.0.0.1:30100 # If type is File then address will be the path of the file
+  protocols:
+    rest:
+      listenAddress: "127.0.0.1:5001"
+      #advertiseAddress: "internal_ip:5001"
+  handler:
+    chain:
+      Provider:
+        default: ratelimiter-provider
+  flowcontrol:
+    Provider:
+      qps:
+        enabled: true  # enable rate limiting or not  是否开启限流，默认true
+        global:
+          limit: 1   # default limit of provider   每秒允许的请求数，默认2147483647max int）
+        limit:
+          someConsumerService: 1  # rate limit for request from a consumer 针对某微服务每秒允许的请求数 ，默认2147483647max int）
+          ygx-gateway-rest: 1

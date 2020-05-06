@@ -1,0 +1,21 @@
+---
+cse:
+  service:
+    registry:
+      scope: full
+      watch: true
+      address: http://127.0.0.1:30100 # If type is File then address will be the path of the file
+  protocols:
+    rest:
+      listenAddress: 127.0.0.1:15021
+      advertiseAdhandler: 127.0.0.1:15021
+  handler:
+    chain:
+      Provider:
+        default: tracing-provider
+  # ,bizkeeper-provider,transport
+
+  #tracing:
+  #  enabled: true
+  #  collectorType: zipkin
+  #  collectorTarget: http://localhost:9411/api/v1/spans

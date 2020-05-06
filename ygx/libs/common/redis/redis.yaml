@@ -1,0 +1,18 @@
+---
+config:
+  addr: 127.0.0.1
+  pwd:
+  dbnum: 1
+  poolsize:  1024
+  maxRetries: 3
+  idleTimeout: 30
+
+  default:
+    addr: 127.0.0.1
+    pwd:
+    dbnum: 1
+    poolsize:  1024
+    maxRetries: 3
+    idleTimeout: 30
+
+

@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+//import "google/protobuf/any.proto";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.pb.xfcuser";
+option java_outer_classname = "XfcUserProto";
+
+package xfcuser;
+
+//enum MessageType {
+//    CREATE_ACCOUNT_REQUEST = 0;
+//    CREATE_ACCOUNT_RESPONSE = 1;
+//    DELETE_ACCOUNT_REQUEST = 2;
+//    DELETE_ACCOUNT_RESPONSE = 3;
+//};
+
+service XfcUser {
+    // Sends a greeting
+    rpc GetXfcUserInfo (UserSelectRequest) returns (UserReply) {}
+
+    rpc UserLogin (AuthRequest) returns (UserReplyToken) {}
+
+    rpc UserVerify (TokenInfo) returns (UserToken) {}
+
+    rpc GetXfcUserBySelect (SearchRequest) returns (MultiUserReply) {}
+
+    rpc UpdateXfcUserInfo (UserRequest) returns (UserReply) {}
+
+    rpc DeleteXfcUserInfo (UserDeleteRequest) returns (UserReply) {}
+}
+
+message UserSelectRequest {
+     int32   user_id = 1;
+     string  user_name = 2;
+     string  mobile  = 5;
+     string  email  = 6;
+}
+
+message UserReply {
+    int32   user_id = 1;
+    string  user_name = 2;
+    string  passwd  = 3;
+    string  nick  = 4;
+    string  mobile  = 5;
+    string  email  = 6;
+    string  post  = 7;
+    int32  team_id  = 8;
+    string  team_name  = 9;
+    string  introduce  = 10;
+    string  department  = 11;
+    int32  department_id  = 12;
+    double  balance  = 13;
+    double  freeze_balance  = 14;
+    double  real_balance = 15;
+
+    int32   role_id = 16;
+    //repeated google.protobuf.Any command = 16;
+}
+
+message AuthRequest {
+    string  user_name = 2;
+    string  passwd  = 3;
+}
+
+message UserReplyToken {
+    UserReply userReply = 1 ;
+    string   token = 2 ;
+}
+
+message UserDeleteRequest {
+    string  user_id = 1;
+}
+
+message UserDeleteReply {
+    bool   flag = 1;
+}
+
+message UserRequest {
+     int32  user_id = 1;
+     string  user_name = 2;
+     string  passwd  = 3;
+     string  nick  = 4;
+     string  mobile  = 5;
+     string  email  = 6;
+     string  post  = 7;
+     int32  team_id  = 8;
+     string  team_name  = 9;
+     string  introduce  = 10;
+     string  department  = 11;
+     int32  department_id  = 12;
+     double  balance  = 13;
+     double  freeze_balance  = 14;
+     double  real_balance = 15;
+     int32   role_id = 16;
+}
+
+message UserUpdateRequest {
+    //reserved 2, 15, 9 to 11;
+
+    int32  user_id = 1;
+    string  user_name = 2;
+    string  passwd  = 3;
+    string  nick  = 4;
+    string  mobile  = 5;
+    string  email  = 6;
+    string  post  = 7;
+    int32  team_id  = 8;
+    string  team_name  = 9;
+    string  introduce  = 10;
+    string  department  = 11;
+    int32  department_id  = 12;
+    double  balance  = 13;
+    double  freeze_balance  = 14;
+    double  real_balance = 15;
+    int32   role_id = 16;
+}
+
+message SearchRequest {
+    string query = 1;
+    int32 page_number = 2;  // Which page number do we want?
+    int32 result_per_page = 3;  // Number of results to return per page.
+}
+
+message MultiUserReply {
+    int32 total = 1;
+    repeated UserReply userReply = 2;
+}
+
+message TokenInfo {
+     string token = 1;
+}
+
+message UserToken {
+    int32  user_id = 1;
+    string  user_name = 2;
+    string  nick  = 3;
+    string  mobile  = 4;
+    string  email  = 5;
+    string  post  = 6;
+    int32 role = 7;
+}

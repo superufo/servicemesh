@@ -1,0 +1,16 @@
+swagger: "2.0"
+info:
+  title: ""
+  version: ""
+basePath: /
+paths:
+  /metrics:
+    get:
+      operationId: HTTPHandleFunc
+  /trace:
+    get:
+      operationId: Trace
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'

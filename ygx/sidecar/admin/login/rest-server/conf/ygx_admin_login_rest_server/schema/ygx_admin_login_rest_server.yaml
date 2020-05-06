@@ -1,0 +1,42 @@
+swagger: "2.0"
+info:
+  title: ""
+  version: ""
+basePath: /
+paths:
+  /:
+    get:
+      operationId: Root
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
+      responses:
+        "200":
+          description: ""
+  /login:
+    post:
+      tags:
+      - admin
+      - test
+      operationId: Login
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
+      responses:
+        "200":
+          description: ""
+  /verifyToken:
+    post:
+      tags:
+      - users
+      - test
+      operationId: VerifyToken
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
+      responses:
+        "200":
+          description: ""

@@ -1,0 +1,12 @@
+---
+#APPLICATION_ID: CSE optional
+cse:
+  service:
+    registry:
+      disabled: false            #optional: 默认开启registry模块
+      type: servicecenter        #optional: 默认类型为对接服务中心
+      scope: full                #optional: scope为full注册时允许跨app
+      address: http://127.0.0.1:30100,http://127.0.0.1:30101
+      register: auto             #optional：默认为自动 [auto manual]
+      refeshInterval: 30s
+      watch: true

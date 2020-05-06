@@ -1,0 +1,13 @@
+#微服务的私有属性192.168.11.57
+service_description:
+  name: RESTServer
+  hostname: hostnameTest
+  properties:
+    project: X1
+  instance_properties:
+    nodeIP: 192.168.11.57
+  #paths:
+  #- path: /rest/demoservice
+  #  property:
+  #    checksession: true
+#

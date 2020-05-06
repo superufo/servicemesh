@@ -1,0 +1,1 @@
+C:\Windows\system32\cmd.exe   D:\gopro\src\github.com\go-chassis\ygx\sidecar\admin\crontab\rest-server\sh\test\test.bat

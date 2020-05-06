@@ -1,0 +1,12 @@
+---
+#微服务的私有属性  USERServer
+# https://docs.servicecomb.io/java-chassis/zh_CN/general-development/CORS.html
+service_description:
+  name: ygx_admin_user_rest_server
+  cors:
+    enabled: true
+    origin: "*"
+    allowCredentials: false
+    allowedMethod: OPTIONS,HEAD,GET,POST,PUT,DELETE,TRACE,CONNEC
+    maxAge: 3600
+#  status: TESTING

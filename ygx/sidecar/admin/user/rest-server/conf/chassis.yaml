@@ -1,0 +1,26 @@
+---
+cse:
+  service:
+    registry:
+      address: http://127.0.0.1:30100 # If type is File then address will be the path of the file
+  protocols:
+    rest:
+      listenAddress: "127.0.0.1:5204"
+      #advertiseAddress: "internal_ip:50004"
+  handler:
+    chain:
+      Provider:
+        default: ygx-auth-handler,tracing-provider,bizkeeper-provider
+#        default: basicAuth, tracing-provider,bizkeeper-provider
+  metrics:
+    apiPath: /metrics      # we can also give api path having prefix "/" ,like /adas/metrics
+    enable: true
+    enableGoRuntimeMetrics: true
+    enableCircuitMetrics: true
+    flushInterval: 10s
+  tracing:
+    tracer: zipkin
+    settings:
+      URI: http://127.0.0.1:9411/api/v1/spans
+      batchSize: 1
+      batchInterval: 1s

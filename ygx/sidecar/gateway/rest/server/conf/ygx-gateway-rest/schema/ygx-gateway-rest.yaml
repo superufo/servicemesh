@@ -1,0 +1,36 @@
+swagger: "2.0"
+info:
+  title: ""
+  version: ""
+basePath: /
+paths:
+  /ygx/admin:
+    post:
+      tags:
+      - token
+      - method
+      - service
+      - func_name
+      operationId: YgxAdminGateway
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
+      responses:
+        "200":
+          description: ""
+  /ygx/app:
+    post:
+      tags:
+      - token
+      - method
+      - service
+      - func_name
+      operationId: YgxAppGateway
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
+      responses:
+        "200":
+          description: ""

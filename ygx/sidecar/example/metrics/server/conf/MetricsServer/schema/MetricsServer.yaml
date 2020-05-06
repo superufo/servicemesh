@@ -1,0 +1,23 @@
+swagger: "2.0"
+info:
+  title: ""
+  version: ""
+basePath: /
+paths:
+  /login:
+    post:
+      operationId: Login
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
+  /metrics:
+    get:
+      operationId: HTTPHandleFunc
+  /sign_out:
+    get:
+      operationId: SignOut
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'

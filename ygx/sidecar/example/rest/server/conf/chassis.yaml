@@ -1,0 +1,32 @@
+---
+cse:
+  service:
+    registry:
+      disabled: false            #optional: 默认开启registry模块
+      type: servicecenter        #optional: 默认类型为对接服务中心
+      scope: full                #optional: scope为full注册时允许跨app
+      address: http://127.0.0.1:30100,http://127.0.0.1:30101
+      register: auto             #optional：默认为自动 [auto manual]
+      refeshInterval: 30s
+      watch: true
+  protocols:
+    rest:
+      listenAddress: "127.0.0.1:15011"
+      advertiseAddress: "127.0.0.1:15011" # internal_ip
+  handler:
+    chain:
+      Provider:
+        default: tracing-provider,bizkeeper-provider
+#        default: basicAuth, tracing-provider,bizkeeper-provider
+  metrics:
+    apiPath: /metrics      # we can also give api path having prefix "/" ,like /adas/metrics
+    enable: true
+    enableGoRuntimeMetrics: true
+    enableCircuitMetrics: true
+    flushInterval: 10s
+tracing:
+  tracer: zipkin
+  settings:
+    URI: http://127.0.0.1:9411/zipkin/api/v1/spans   #http://127.0.0.1:9411/api/v1/spans
+    batchSize: 1
+    batchInterval: 1s

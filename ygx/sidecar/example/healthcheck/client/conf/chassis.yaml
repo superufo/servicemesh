@@ -1,0 +1,14 @@
+---
+#APPLICATION_ID: CSE optional
+cse:
+  service:
+    registry:
+      address: http://127.0.0.1:30100
+      healthCheck: true
+  config:
+    client:
+      serverUri: http://127.0.0.1:30110
+      type: servicecomb-kie
+  protocols:
+    rest:
+      listenAddress: 127.0.0.1:15559

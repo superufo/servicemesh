@@ -1,0 +1,15 @@
+---
+cse:
+  service:
+    registry:
+      address: http://127.0.0.1:30100 # If type is File then address will be the path of the file
+  protocols:
+    rest:
+      listenAddress: "127.0.0.1:23600"
+      scope: full
+      #advertiseAddress: "internal_ip:10000"
+  handler:
+    chain:
+      Provider:
+        gateway: transport
+#       default: basicAuth, tracing-provider,bizkeeper-provider

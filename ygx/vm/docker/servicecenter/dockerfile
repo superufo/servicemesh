@@ -1,0 +1,63 @@
+#Pull base image.
+FROM centos:7
+
+
+#下载地址：https://studygolang.com/dl/golang/go1.14.1.windows-amd64.msi
+# https://github.com/apache/servicecomb-service-center/archive/1.3.0.tar.gz
+
+# Install Go  yum -y update  yum -y install  wget
+RUN \
+  yum -y install gcc g++ automake && \ 
+  mkdir -p /gopath && \
+  mkdir -p /opt/service-center && \
+  mkdir -p /download
+
+COPY  dockerfile  /download/
+COPY  startbak.sh  /download/
+COPY  go1.11.8.linux-amd64.tar.gz  /download/
+
+RUN \
+  cd /download  && \
+  tar -C /usr/local -zxvf  go1.11.8.linux-amd64.tar.gz && \
+  echo "export GOPROXY=https://goproxy.io/ " >> /etc/profile && \
+  echo "export GOROOT=/usr/local/go " >> /etc/profile && \
+  echo "export GOPATH=/gopath " >> /etc/profile && \
+  echo "export PATH=$PATH:$GOROOT/bin " >> /etc/profile && \
+  source /etc/profile
+
+ENV GO111MODULE on
+ENV GOROOT /usr/local/go
+ENV GOPATH /gopath
+ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
+ENV GOPROXY=https://goproxy.io/
+
+WORKDIR /download 
+COPY  servicecomb-service-center-1.3.0.tar.gz /download/
+  
+RUN \  
+  cd  /download  && \
+  tar -C /opt -zxvf  servicecomb-service-center-1.3.0.tar.gz && \
+  cd  /opt/servicecomb-service-center-1.3.0   && \
+  go mod download && \
+  go mod vendor && \
+  go build -o service-center && \
+  mkdir /opt/service-center/conf && \
+  cp /opt/servicecomb-service-center-1.3.0/etc/conf/app.conf  /opt/service-center/conf/app.conf && \
+  mv  /opt/servicecomb-service-center-1.3.0/service-center /opt/service-center 
+ 
+RUN \  
+  chmod -R 777 /opt/service-center && \
+  cd /opt/service-center
+  
+COPY  start.sh  /opt/service-center/
+
+EXPOSE 30100
+
+ENTRYPOINT ["/opt/service-center/start.sh"]
+
+#CMD ["/bin/sh","/opt/service-center/start.sh",">", "/opt/service-center/1.log","&"]
+#ENTRYPOINT ["nohup","/opt/service-center/start.sh",">", "/opt/service-center/1.log","2",">", "&1", "&"]
+#Define default command.
+#CMD ["bash"]
+
+######docker build -t  coollyj/servicecenter:1.3.0   .

@@ -1,0 +1,20 @@
+---
+cse:
+  isolation:
+    Provider:
+      timeoutInMilliseconds: 1000  # 请求延迟1000毫秒 词请求将视为失败
+      maxConcurrentRequests: 100 # 最大并发100
+  circuitBreaker:
+    Provider:
+      enabled: false
+      forceOpen: false
+      forceClosed: false
+      sleepWindowInMilliseconds: 10000  # 熔断发生时候，10000毫秒尝试再请求通过，如果尝试失败，将继续熔断
+      requestVolumeThreshold: 20   # 1秒内有20 个请求失败 熔断器打开
+      errorThresholdPercentage: 1 # 百分之一的请求失败，熔断器打开
+  fallback:
+    Provider:
+      enabled: true
+  fallbackpolicy:
+    Provider:
+      policy: throwexception

@@ -1,0 +1,13 @@
+---
+#APPLICATION_ID: CSE optional
+cse:
+  service:
+    registry:
+      address: http://127.0.0.1:30100,http://127.0.0.1:30101
+  config:
+    client:
+      serverUri: http://127.0.0.1:30110,http://127.0.0.1:30101
+      type: servicecomb-kie
+  protocols:
+    rest:
+      listenAddress: 127.0.0.1:15503

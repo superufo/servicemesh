@@ -1,0 +1,20 @@
+swagger: "2.0"
+info:
+  title: ""
+  version: ""
+basePath: /
+paths:
+  /healthz:
+    get:
+      operationId: RestCheck
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
+  /payments:
+    get:
+      operationId: GetPayments
+      consumes:
+      - '*/*'
+      produces:
+      - '*/*'
